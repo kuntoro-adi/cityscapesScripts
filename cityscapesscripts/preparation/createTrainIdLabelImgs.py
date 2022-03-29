@@ -34,6 +34,9 @@ def main():
         cityscapesPath = os.environ['CITYSCAPES_DATASET']
     else:
         cityscapesPath = os.path.join(os.path.dirname(os.path.realpath(__file__)),'..','..')
+
+    # Hardcode the location of cityscapes dataset
+    cityscapesPath = '../CIL-S/data/cityscapes'
     # how to search for all ground truth
     searchFine   = os.path.join( cityscapesPath , "gtFine"   , "*" , "*" , "*_gt*_polygons.json" )
     searchCoarse = os.path.join( cityscapesPath , "gtCoarse" , "*" , "*" , "*_gt*_polygons.json" )
@@ -60,7 +63,7 @@ def main():
     print("Progress: {:>3} %".format( progress * 100 / len(files) ), end=' ')
     for f in files:
         # create the output filename
-        dst = f.replace( "_polygons.json" , "_labelTrainIds.png" )
+        dst = f.replace( "_polygons.json" , "_labelCatTrainIds.png" ) # "_labelTrainIds.png" )
 
         # do the conversion
         try:
